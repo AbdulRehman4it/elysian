@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="w-full absolute top-0 left-0 right-0 z-20 md:pt-12 pt-6">
+  <div class="flex justify-between items-center xl:px-36 md:px-10 px-5">
+    <!-- Logo Section -->
+    <div class="relative">
+      <img src="./assets/img/logo.png" alt="Black Logo" class="w-32 block dark:hidden" id="light-logo">
+      <img src="./assets/img/gold logo.png" alt="Gold Logo" class="w-32 hidden dark:block" id="dark-logo">
+    </div>
+
+    <!-- Menu (Desktop) -->
+ <div class="hidden lg:flex">
+  <ul class="flex 2xl:space-x-10 lg:space-x-8 space-x-5 font-bold 2xl:text-lg xl:text-base lg:text-sm items-center relative">
+    <li><a href="#Home" class="menu-link text-[#B8A16B] text-base font-normal">Home</a></li>
+    <li><a href="#About" class="menu-link text-[#B8A16B] text-base font-normal">About</a></li>
+
+    <!-- Services with Fixed Width -->
+    <li class="relative group min-w-[100px] text-center"> 
+      <a href="#Services" class="menu-link text-[#B8A16B] text-base font-normal flex items-center justify-center">
+        Services
+        <svg class="w-4 h-4 ml-1 text-[#B8A16B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </a>
+      <!-- Dropdown Menu -->
+      <ul class="absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white text-[#B8A16B] rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+        <li><a href="#Service1" class="block px-4 py-2 hover:bg-gray-100">Service 1</a></li>
+        <li><a href="#Service2" class="block px-4 py-2 hover:bg-gray-100">Service 2</a></li>
+        <li><a href="#Service3" class="block px-4 py-2 hover:bg-gray-100">Service 3</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#Book" class="menu-link text-[#B8A16B] text-base font-normal">Book Now</a></li>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-toggle w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 focus:outline-none" aria-pressed="false" aria-label="Toggle dark mode">
+      <svg class="icon-sun w-6 h-6 text-[#B8A16B]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <title>Light mode</title>
+        <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3.5" fill="currentColor"></circle>
+          <path d="M12 1v2" />
+          <path d="M12 21v2" />
+          <path d="M4.22 4.22l1.42 1.42" />
+          <path d="M18.36 18.36l1.42 1.42" />
+          <path d="M1 12h2" />
+          <path d="M21 12h2" />
+          <path d="M4.22 19.78l1.42-1.42" />
+          <path d="M18.36 5.64l1.42-1.42" />
+        </g>
+      </svg>
+      <svg class="icon-moon w-6 h-6 hidden text-[#B8A16B]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <title>Dark mode</title>
+        <path fill="currentColor" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+      </svg>
+    </button>
+  </ul>
+</div>
+
+
+
+    <!-- Hamburger Menu (Mobile) -->
+    <div class="lg:hidden">
+      <button id="menu-btn" class="relative w-10 h-10 focus:outline-none z-50">
+        <span class="sr-only">Toggle Menu</span>
+        <div class="hamburger-lines">
+          <span class="absolute bg-[#121212] dark:bg-[#B8A16B] w-8 h-[3px] top-2 left-1 transition-all duration-300 ease-in-out origin-top-left"></span>
+          <span class="absolute bg-[#121212] dark:bg-[#B8A16B] w-8 h-[3px] top-4 left-1 transition-all duration-300 ease-in-out"></span>
+          <span class="absolute bg-[#121212] dark:bg-[#B8A16B] w-8 h-[3px] top-6 left-1 transition-all duration-300 ease-in-out origin-bottom-left"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+ <!-- Mobile Menu -->
+<div id="mobile-menu" class="lg:hidden fixed top-0 left-0 w-full h-full bg-white dark:bg-[#121212] z-10 flex flex-col items-center justify-center px-5 pb-5 transform -translate-y-full transition-transform duration-500 ease-in-out">
+  <ul class="flex flex-col justify-center items-center space-y-6 font-light 2xl:text-lg xl:text-base lg:text-sm mt-4">
+    <li><a href="#Home" class="menu-link text-[#B8A16B] text-lg font-normal">Home</a></li>
+    <li><a href="#About" class="menu-link text-[#B8A16B] text-lg font-normal">About</a></li>
+    
+    <!-- Services with Clickable Dropdown -->
+    <li class="relative w-full text-center">
+      <button id="services-toggle" class="w-full text-[#B8A16B] text-lg font-normal flex justify-center items-center focus:outline-none">
+        Services
+        <svg class="w-4 h-4 ml-1 text-[#B8A16B] transition-transform duration-300" id="dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+      <!-- Dropdown Menu -->
+      <ul id="services-dropdown" class="hidden mt-2 bg-white dark:bg-[#1e1e1e] text-[#B8A16B] rounded-lg shadow-lg w-40 mx-auto">
+        <li><a href="#Service1" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Service 1</a></li>
+        <li><a href="#Service2" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Service 2</a></li>
+        <li><a href="#Service3" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Service 3</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#Book" class="menu-link text-[#B8A16B] text-lg font-normal">Book Now</a></li>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-toggle w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 focus:outline-none" aria-pressed="false" aria-label="Toggle dark mode">
+      <svg class="icon-sun w-6 h-6 text-[#B8A16B]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <title>Light mode</title>
+        <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3.5" fill="currentColor"></circle>
+          <path d="M12 1v2" />
+          <path d="M12 21v2" />
+          <path d="M4.22 4.22l1.42 1.42" />
+          <path d="M18.36 18.36l1.42 1.42" />
+          <path d="M1 12h2" />
+          <path d="M21 12h2" />
+          <path d="M4.22 19.78l1.42-1.42" />
+          <path d="M18.36 5.64l1.42-1.42" />
+        </g>
+      </svg>
+      <svg class="icon-moon w-6 h-6 hidden text-[#B8A16B]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <title>Dark mode</title>
+        <path fill="currentColor" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+      </svg>
+    </button>
+  </ul>
+</div>
+
+<script>
+  // Toggle Dropdown on Mobile
+  const toggleBtn = document.getElementById("services-toggle");
+  const dropdown = document.getElementById("services-dropdown");
+  const arrow = document.getElementById("dropdown-arrow");
+
+  toggleBtn.addEventListener("click", () => {
+    dropdown.classList.toggle("hidden");
+    arrow.classList.toggle("rotate-180"); // Rotate arrow when open
+  });
+</script>
+
+</nav>
+
+
+ <!-- Consent Popup -->
+<div id="consent-popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 transition-opacity duration-500 opacity-0 pointer-events-none">
+  <div class="bg-white dark:bg-[#121212] max-w-md w-full rounded-lg shadow-lg p-6 text-center">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">We Value Your Privacy</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+      We use cookies to ensure you get the best experience on our website.  
+      Please read our <a href="#" class="text-[#B8A16B] underline">Privacy Policy</a>.
+    </p>
+    <div class="flex justify-center space-x-3">
+      <button id="decline-btn" class="px-4 py-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">Decline</button>
+      <button id="accept-btn" class="px-4 py-2 text-sm text-white bg-[#B8A16B] rounded hover:bg-[#a8915f]">Accept</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("consent-popup");
+    const acceptBtn = document.getElementById("accept-btn");
+    const declineBtn = document.getElementById("decline-btn");
+
+    // Always show popup on page load
+    popup.classList.remove("opacity-0", "pointer-events-none");
+
+    // Accept button closes popup
+    acceptBtn.addEventListener("click", closePopup);
+
+    // Decline button closes popup
+    declineBtn.addEventListener("click", closePopup);
+
+    function closePopup() {
+      popup.classList.add("opacity-0", "pointer-events-none");
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Consent Popup -->
+<!-- <div id="consent-popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 transition-opacity duration-500 opacity-0 pointer-events-none">
+  <div class="bg-white dark:bg-[#121212] max-w-md w-full rounded-lg shadow-lg p-6 text-center">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">We Value Your Privacy</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+      We use cookies to ensure you get the best experience on our website.  
+      Please read our <a href="#" class="text-[#B8A16B] underline">Privacy Policy</a>.
+    </p>
+    <div class="flex justify-center space-x-3">
+      <button id="decline-btn" class="px-4 py-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">Decline</button>
+      <button id="accept-btn" class="px-4 py-2 text-sm text-white bg-[#B8A16B] rounded hover:bg-[#a8915f]">Accept</button>
+    </div>
+  </div>
+</div> -->
+<!-- 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("consent-popup");
+    const acceptBtn = document.getElementById("accept-btn");
+    const declineBtn = document.getElementById("decline-btn");
+
+   
+    if (!localStorage.getItem("consentAccepted")) {
+      popup.classList.remove("opacity-0", "pointer-events-none");
+    }
+
+    // Accept button
+    acceptBtn.addEventListener("click", () => {
+      localStorage.setItem("consentAccepted", "true");
+      closePopup();
+    });
+
+    // Decline button
+    declineBtn.addEventListener("click", closePopup);
+
+    function closePopup() {
+      popup.classList.add("opacity-0", "pointer-events-none");
+    }
+  });
+</script> -->
+
+
+<!-- Navbar JS -->
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const lines = menuBtn.querySelectorAll('span');
+const darkToggles = document.querySelectorAll('.dark-toggle');
+const sunIcons = document.querySelectorAll('.icon-sun');
+const moonIcons = document.querySelectorAll('.icon-moon');
+const menuLinks = document.querySelectorAll('.menu-link');
+
+let isOpen = false;
+
+// Mobile Menu Toggle
+menuBtn.addEventListener('click', () => {
+  isOpen = !isOpen;
+  if (isOpen) {
+    mobileMenu.classList.remove('-translate-y-full');
+    mobileMenu.classList.add('translate-y-0');
+    lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+    lines[1].style.opacity = '0';
+    lines[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+  } else {
+    mobileMenu.classList.remove('translate-y-0');
+    mobileMenu.classList.add('-translate-y-full');
+    lines[0].style.transform = 'rotate(0) translate(0, 0)';
+    lines[1].style.opacity = '1';
+    lines[2].style.transform = 'rotate(0) translate(0, 0)';
+  }
+});
+
+// Dark Mode Function
+function applyDarkMode(isDark) {
+  document.documentElement.classList.toggle('dark', isDark);
+  darkToggles.forEach(toggle => toggle.setAttribute('aria-pressed', String(isDark)));
+  if (isDark) {
+    sunIcons.forEach(icon => icon.classList.add('hidden'));
+    moonIcons.forEach(icon => icon.classList.remove('hidden'));
+  } else {
+    moonIcons.forEach(icon => icon.classList.add('hidden'));
+    sunIcons.forEach(icon => icon.classList.remove('hidden'));
+  }
+}
+
+// Default Dark Mode ON
+const saved = localStorage.getItem('prefers-dark');
+let isDark = saved !== null ? saved === 'true' : true;
+applyDarkMode(isDark);
+
+// Dark Mode Toggle Event
+darkToggles.forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    isDark = !document.documentElement.classList.contains('dark');
+    applyDarkMode(isDark);
+    localStorage.setItem('prefers-dark', String(isDark));
+    toggle.animate([{ transform: 'scale(1)' }, { transform: 'scale(0.92)' }, { transform: 'scale(1)' }], { duration: 160, easing: 'ease-out' });
+  });
+});
+
+// Smooth Scroll & Close Mobile Menu
+menuLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const targetId = link.getAttribute("href").substring(1);
+    const targetSection = document.getElementById(targetId);
+
+    if (targetSection) {
+      window.scrollTo({
+        top: targetSection.offsetTop - 80,
+        behavior: "smooth"
+      });
+    }
+
+    // Close menu on mobile after click
+    if (window.innerWidth < 1024) {
+      mobileMenu.classList.remove('translate-y-0');
+      mobileMenu.classList.add('-translate-y-full');
+      lines[0].style.transform = 'rotate(0) translate(0, 0)';
+      lines[1].style.opacity = '1';
+      lines[2].style.transform = 'rotate(0) translate(0, 0)';
+      isOpen = false;
+    }
+  });
+});
+
+</script>
+</body>
+</html>
